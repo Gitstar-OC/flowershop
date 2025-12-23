@@ -9,3 +9,16 @@ export default function Home() {
     </div>
   );
 }
+
+//    <Link
+//                     href="/"
+//                     className={cn(
+//                         buttonVariants({ variant: "secondary" }),
+//                         "group" // make the button a hover group
+//                     )}
+//                 >
+//                     Secondary
+//                     <ArrowRight
+//                         className="ml-1 transition-transform duration-200 group-hover:translate-x-[2px]"
+//                     />
+// </Link>
