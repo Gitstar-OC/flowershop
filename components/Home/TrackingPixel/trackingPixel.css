@@ -1,0 +1,28 @@
+.grid-bg {
+  --size: 56px;
+
+  /* SVG-like stroke tone */
+  --line: rgba(148, 163, 184, 0.28); /* slate-400/30 */
+  --hover: rgba(147, 197, 253, 0.22); /* blue-300 glow */
+
+  /* Hover position */
+  --x: -100px;
+  --y: -100px;
+
+  background-image:
+    radial-gradient(
+      circle at var(--x) var(--y),
+      var(--hover) 0%,
+      var(--hover) 14%,
+      transparent 22%
+    ),
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+
+  background-size:
+    100% 100%,
+    var(--size) var(--size),
+    var(--size) var(--size);
+
+  animation: grid-drift 48s linear infinite;
+}
