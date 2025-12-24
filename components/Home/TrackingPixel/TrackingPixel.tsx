@@ -45,8 +45,8 @@ export default function TrackingPixel() {
         <ButtonGroup
           primaryButtonChildren="Purchase Pixel"
           secondaryButtonChildren="Learn More"
-          primaryButtonHref="/Contact"
-          secondaryButtonHref="/Conversion"
+          primaryButtonHref="/contact"
+          secondaryButtonHref="/conversion"
         />
       </div>
     </div>

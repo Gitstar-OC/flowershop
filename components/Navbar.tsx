@@ -52,7 +52,7 @@ const Navbar = () => {
           </Link>
           <div className="flex gap-2.5">
             <Link
-              href="/Conversion"
+              href="/conversion"
               className={cn(
                 buttonVariants({ variant: "ghost" }),
                 "px-1 md:px-2"
@@ -61,7 +61,7 @@ const Navbar = () => {
               Conversion
             </Link>
             <Link
-              href="/Resources"
+              href="/resources"
               className={cn(
                 buttonVariants({ variant: "ghost" }),
                 "px-1 md:px-2"
@@ -69,7 +69,7 @@ const Navbar = () => {
             >
               Resources
             </Link>
-            <Link href="/Contact" className={cn(buttonVariants({}), "")}>
+            <Link href="/contact" className={cn(buttonVariants({}), "")}>
               Contact
             </Link>
           </div>

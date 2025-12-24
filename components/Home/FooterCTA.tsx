@@ -12,8 +12,8 @@ brand to the next level. "
       <ButtonGroup
         primaryButtonChildren="Get Started"
         secondaryButtonChildren="See Resources"
-        primaryButtonHref="/Contact"
-        secondaryButtonHref="/Resources"
+        primaryButtonHref="/contact"
+        secondaryButtonHref="/resources"
       />
     </div>
   );
