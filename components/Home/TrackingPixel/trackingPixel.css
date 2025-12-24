@@ -26,3 +26,16 @@
 
   animation: grid-drift 48s linear infinite;
 }
+
+@keyframes grid-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}
+
+.animate-grid-drift {
+  animation: grid-drift 60s linear infinite;
+}
