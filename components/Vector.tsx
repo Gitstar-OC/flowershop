@@ -1,20 +1,32 @@
 import type { SVGProps } from "react";
 
-const ArrowRight = (props: SVGProps<SVGSVGElement>) => (
+interface VectorProps extends SVGProps<SVGSVGElement> {
+  color?: string;
+  className?: string;
+  strokeWidth?: number;
+}
+
+const ArrowRight = ({
+  color,
+  strokeWidth,
+  className,
+  ...props
+}: VectorProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={12}
     height={9}
     fill="none"
+    className={className}
     {...props}
   >
     <path
-      stroke="#888"
+      stroke={color || "#888888"}
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth={2}
+      strokeWidth={strokeWidth || 2}
       d="M1 4.502h5.516L10 4.501m0 0L6.972 1M10 4.5 6.972 8"
     />
   </svg>
 );
-export default ArrowRight;
+export { ArrowRight };

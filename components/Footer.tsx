@@ -7,7 +7,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <Wrapper>
-      <footer className="mt-7.5">
+      <footer className="mt-7.5 mb-10">
         <div className="border-b border-border pb-4">
           <div className="flex justify-between items-center">
             <Image
@@ -18,9 +18,15 @@ const Footer = () => {
               className="h-6"
             />
             <div className="flex gap-3">
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">     
               <Instagram className="h-5 w-5" />
+              </a>
+              <a href="https://www.x.com" target="_blank" rel="noopener noreferrer">     
               <BsTwitterX className="h-5 w-5" />
+              </a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">        
               <BsLinkedin className="h-5 w-5" />
+              </a>
             </div>
           </div>
         </div>

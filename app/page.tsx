@@ -1,24 +1,22 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ButtonGroup } from "@/components/Button";
 
 export default function Home() {
   return (
     <div>
       <Navbar />
+      <div className="min-h-screen">
+        <ButtonGroup
+        primaryChildren="Get in Touch"
+        primaryHref="/Contact"
+        secondaryChildren="Learn More"
+        secondaryHref="#solutions"
+        />
+
+
+      </div>
       <Footer />
     </div>
   );
 }
-
-//    <Link
-//                     href="/"
-//                     className={cn(
-//                         buttonVariants({ variant: "secondary" }),
-//                         "group" // make the button a hover group
-//                     )}
-//                 >
-//                     Secondary
-//                     <ArrowRight
-//                         className="ml-1 transition-transform duration-200 group-hover:translate-x-[2px]"
-//                     />
-// </Link>
