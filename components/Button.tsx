@@ -13,7 +13,8 @@ const buttonVariants = cva(
       variant: {
         default:
           "border text-4/5 active:scale-98 select-none border-[#08F] button-selection bg-[linear-gradient(to_bottom,rgba(0,136,255,0.7)_0%,rgba(0,136,255,0.7)_18%,rgba(0,136,255,0.75)_36%,rgba(0,136,255,1)_66%,#0077ff_100%)] hover:bg-[#0088FF] text-white font-semibold transition-all duration-200 ease-linear",
-        ghost: "text-[#333] active:scale-98 hover:bg-[#f3f3f3] select-none font-medium",
+        ghost:
+          "text-[#333] active:scale-98 hover:bg-[#f3f3f3] select-none font-medium",
         secondary:
           "border active:scale-98 select-none text-[#666] hover:text-[#444] border-none bg-[#f3f3f3] text-center ",
       },
@@ -65,29 +66,29 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 interface ButtonGroupProps {
-  primaryChildren: React.ReactNode;
-  secondaryChildren: React.ReactNode;
-  primaryHref?: string;
-  secondaryHref?: string;
+  primaryButtonChildren: React.ReactNode;
+  secondaryButtonChildren: React.ReactNode;
+  primaryButtonHref?: string;
+  secondaryButtonHref?: string;
 }
 
 const ButtonGroup = ({
-  primaryChildren,
-  secondaryChildren,
-  primaryHref = "/",
-  secondaryHref = "/",
+  primaryButtonChildren,
+  secondaryButtonChildren,
+  primaryButtonHref = "/",
+  secondaryButtonHref = "/",
 }: ButtonGroupProps) => {
   return (
     <div className="flex items-center justify-center gap-2">
-      <Link className={buttonVariants({})} href={primaryHref}>
-        {primaryChildren}
+      <Link className={buttonVariants({})} href={primaryButtonHref}>
+        {primaryButtonChildren}
       </Link>
       <Link
         className={cn(buttonVariants({ variant: "secondary" }), "group")}
-        href={secondaryHref}
+        href={secondaryButtonHref}
       >
-        {secondaryChildren}{" "}
-        <ArrowRight className="ml-2 mt-px group-hover:stroke-[#333] transition-transform duration-200 group-hover:translate-x-0.5" />{" "}
+        {secondaryButtonChildren}{" "}
+        <ArrowRight className={cn("ml-2 mt-px transition-transform duration-200 group-hover:translate-x-0.5")} />{" "}
       </Link>
     </div>
   );

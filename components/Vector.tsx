@@ -7,7 +7,6 @@ interface VectorProps extends SVGProps<SVGSVGElement> {
 }
 
 const ArrowRight = ({
-  color,
   strokeWidth,
   className,
   ...props
@@ -21,7 +20,7 @@ const ArrowRight = ({
     {...props}
   >
     <path
-      stroke={color || "#888888"}
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={strokeWidth || 2}

@@ -1,21 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ButtonGroup } from "@/components/Button";
+import TrackingPixel from "@/components/Home/TrackingPixel";
+import StayInformed from "@/components/Home/StayInformed";
+import FooterCTA from "@/components/Home/FooterCTA";          
 
 export default function Home() {
   return (
     <div>
       <Navbar />
-      <div className="min-h-screen">
-        <ButtonGroup
-        primaryChildren="Get in Touch"
-        primaryHref="/Contact"
-        secondaryChildren="Learn More"
-        secondaryHref="#solutions"
-        />
-
-
-      </div>
+      <TrackingPixel />
+      <StayInformed />
+      <FooterCTA />
       <Footer />
     </div>
   );

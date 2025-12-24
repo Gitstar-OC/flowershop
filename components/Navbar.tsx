@@ -8,24 +8,31 @@ import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const contentRef = useRef(null);
+  const ticking = useRef(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsScrolled(!entry.isIntersecting),
-      { rootMargin: "-1px 0px 0px 0px" } // Triggers when hero/content leaves viewport top
-    );
+  const handleScroll = () => {
+    if (!ticking.current) {
+      requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 0);
+        ticking.current = false;
+      });
+      ticking.current = true;
+    }
+  };
 
-    if (contentRef.current) observer.observe(contentRef.current);
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll(); // Initial check
 
-    return () => observer.disconnect();
-  }, []);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []); 
+  
   return (
     <div
       className={cn(
         "h-13 sticky top-0 z-999 transition-all duration-300",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b" // bg-background when scrolled
+          ? "bg-background/80 backdrop-blur-md border-b" // bg-background when scrolled
           : "bg-transparent"
       )}
     >

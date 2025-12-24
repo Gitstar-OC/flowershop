@@ -1,33 +1,59 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
+
+const HEADER_WIDTHS = {
+  default: {
+    title: "max-w-xl",
+    description: "max-w-3xl",
+  },
+  narrow: {
+    title: "max-w-lg",
+    description: "max-w-2xl",
+  },
+  wide: {
+    title: "max-w-2xl",
+    description: "max-w-5xl",
+  },
+  full: {
+    title: "max-w-5xl",
+    description: "max-w-full",
+  },
+} as const;
 
 interface HeaderProps {
-  title: string
-  description?: string
-  className?: string
+  title: string;
+  description?: string;
+  className?: string;
+  width?: keyof typeof HEADER_WIDTHS;
+  variant?: "default" | "small";
 }
 
 export default function Header({
   title,
   description,
   className,
+  width, 
+  variant = "default",
 }: HeaderProps) {
+  const styles = HEADER_WIDTHS[width ?? "default"];
+
   return (
     <section
-      className={cn(
-        "flex flex-col justify-center items-center w-full gap-3.75",
-        className
-      )}
+      className={cn("flex flex-col items-center gap-3.75 w-full", className)}
     >
-      <h1 className={cn(
-        "text-center text-[28px]/[30px] sm:text-[30px]/[32px] md:text-[34px]/[34px] lg:text-[40px]/[40px] font-medium max-w-4xl text-balance",
-      )}>
+      <h1 className={cn(variant === "default" ? "heading" : "heading-small", "text-center w-full mx-auto", styles.title)}>
         {title}
       </h1>
-      <p className={cn(
-        "text-center text-[16px] text-[#333] sm:text-[18px] md:text-[20px] lg:text-[22px] mt-6 lg:mt-2 md:mt-3 tracking-[0.1px] max-w-3xl text-balance",
-      )}>
-        {description}
-      </p>
+
+      {description && (
+        <p
+          className={cn(
+            "subheading text-center w-full mx-auto",
+            styles.description
+          )}
+        >
+          {description}
+        </p>
+      )}
     </section>
-  )
+  );
 }
