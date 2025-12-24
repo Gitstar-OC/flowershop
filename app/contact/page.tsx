@@ -1,5 +1,5 @@
-import Header from "@/components/Contact/Header";
+import ContactHeader from "@/components/Contact/ContactHeader";
 
 export default function Contact() {
-  return <Header />;
+  return <ContactHeader />;
 }

@@ -12,7 +12,7 @@ const LOGOS = [
 
 const EMAIL = "help@flowershop.com";
 
-const Header = () => {
+const ContactHeader = () => {
   return (
     <div className="bg-white py-12">
       <Wrapper>
@@ -58,9 +58,8 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Right Form */}
           <div className="w-full lg:w-1/2 flex justify-end">
-            <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-xl p-8">
+            <div className="w-full max-w-130 bg-white rounded-3xl shadow p-8">
               <Form />
             </div>
           </div>
@@ -76,4 +75,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default ContactHeader;
