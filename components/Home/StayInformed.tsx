@@ -4,8 +4,8 @@ import Wrapper from "../Wrapper";
 const StayInformed = () => {
   return (
     <Wrapper>
-      <div className="flex flex-col lg:h-125 justify-between border-y border-border">
-        <div className="border-x border-border flex-1">
+      <div className="flex flex-col lg:h-125 justify-between outline-t border-border">
+        <div className="border-x border-border flex flex-1 items-center">
           <Header
             width="full"
             variant="small"
@@ -33,21 +33,14 @@ interface MetricCardProps {
   text: string;
 }
 
-const MetricCard = ({
-  icon = <Star className="w-6 h-6" />,
-  number,
-  text,
-}: MetricCardProps) => {
+const MetricCard = ({ icon = <Star className="w-6 h-6" />, number, text }: MetricCardProps) => {
   return (
-    <div className="border border-border aspect-square p-1">
-      <div className="border border-border h-full w-full flex flex-col items-center justify-between relative rounded-4 p-4">
+    <div className="border-t border-l border-r border-border aspect-square p-1">
+      <div className="border border-border h-full w-full flex flex-col items-center justify-center relative rounded-2xl p-4">
         <div className="absolute top-2 left-2">{icon}</div>
-        <div className="text-4xl sm:text-5xl lg:text-6xl font-normal">
-          {number}
-        </div>
-        <p className="paragraph text-center mb-4">{text}</p>
+        <div className="text-4xl sm:text-5xl lg:text-6xl font-normal">{number}</div>
+        <p className="paragraph text-center absolute bottom-0 mb-4">{text}</p>
       </div>
     </div>
   );
 };
-
