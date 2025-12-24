@@ -11,18 +11,18 @@ interface GridProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export function InteractiveGridPattern({
-  width = 56,          // smaller boxes
-  height = 56,         // smaller boxes
-  squares = [20, 14],  // more columns/rows
+  width = 56,
+  height = 56,
+  squares = [20, 14],
   className,
   ...props
 }: GridProps) {
-  const [h, v] = squares;
-  const total = h * v;
+  const [cols, rows] = squares;
+  const total = cols * rows;
 
   return (
     <svg
-      viewBox={`0 0 ${width * h} ${height * v}`}
+      viewBox={`0 0 ${width * cols} ${height * rows}`}
       preserveAspectRatio="xMidYMid slice"
       className={cn(
         "absolute inset-0 w-full h-full scale-125 -skew-y-12 opacity-70",
@@ -35,21 +35,21 @@ export function InteractiveGridPattern({
           .grid-cell {
             fill: transparent;
             stroke: rgba(96,165,250,0.18);
-            animation: fade 40s ease-in-out infinite;
+            animation: fade 42s ease-in-out infinite;
           }
 
           @keyframes fade {
             0%   { fill: transparent; }
-            8%   { fill: rgba(59,130,246,0.22); }
-            22%  { fill: transparent; }
+            10%  { fill: rgba(59,130,246,0.22); }
+            25%  { fill: transparent; }
             100% { fill: transparent; }
           }
         `}
       </style>
 
       {Array.from({ length: total }).map((_, i) => {
-        const x = (i % h) * width;
-        const y = Math.floor(i / h) * height;
+        const x = (i % cols) * width;
+        const y = Math.floor(i / cols) * height;
 
         return (
           <rect
@@ -59,9 +59,7 @@ export function InteractiveGridPattern({
             width={width}
             height={height}
             className="grid-cell"
-            style={{
-              animationDelay: `${Math.random() * 30}s`,
-            }}
+            style={{ animationDelay: `${Math.random() * 32}s` }}
           />
         );
       })}
