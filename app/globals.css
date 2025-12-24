@@ -14,7 +14,7 @@
 }
 
 .input-label {
-  @apply text-[14px] text-[#666] sm:text-[16px] md:text-[18px] lg:text-[20px];
+  @apply text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px];
 }
 
 .paragraph {

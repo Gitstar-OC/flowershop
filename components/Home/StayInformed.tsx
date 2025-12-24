@@ -39,8 +39,8 @@ const MetricCard = ({
   text,
 }: MetricCardProps) => {
   return (
-    <div className="border-t border-l border-r border-border aspect-square p-1">
-      <div className="border border-border h-full w-full flex flex-col items-center justify-center relative rounded-2xl p-4">
+    <div className="border-t border-l border-r bg-[#fafafa] border-border aspect-square p-1">
+      <div className="border border-border h-full w-full flex flex-col items-center justify-center bg-white relative rounded sm:rounded-lg md:rounded-xl lg:rounded-2xl p-4">
         <div className="absolute top-2 left-2">{icon}</div>
         <div className="text-4xl sm:text-5xl lg:text-6xl font-normal">
           {number}

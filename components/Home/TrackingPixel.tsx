@@ -3,7 +3,7 @@ import { ButtonGroup } from "../Button";
 
 const TrackingPixel = () => {
   return (
-    <div className="flex flex-col lg:h-120 justify-center border-y border-border gap-3.75">
+    <div className="flex flex-col lg:h-150 justify-center border-y border-border gap-3.75">
       <Header
         title="Track Every Sale. 
       Measure Every Success."
