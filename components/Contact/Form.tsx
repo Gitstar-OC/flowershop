@@ -13,10 +13,30 @@ import {
 } from "../ui/select";
 import { cn } from "@/lib/utils";
 
-type Errors = Partial<Record<string, string>>;
+type FormValues = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  companyName: string;
+  website: string;
+  companySize: string;
+  message: string;
+  newsletter: boolean;
+};
+
+type Errors = Partial<Record<keyof FormValues, string>>;
+
+const inputClass =
+  "w-full h-10 rounded-[10px] border-none [box-shadow:0_1px_2px_-1px_rgba(15,15,15,0.10),0_0_0_1px_rgba(15,15,15,0.10)]";
+const textareaClass =
+  "w-full min-h-32 rounded-[10px] border-none border px-3 py-2 focus-visible:ring-2 focus-visible:ring-blue-200 [box-shadow:0_1px_2px_-1px_rgba(15,15,15,0.10),0_0_0_1px_rgba(15,15,15,0.10)]";
+const labelClass = "input-label text-[#666]";
+const errorClass = "text-xs text-red-500";
+const fieldGapClass = "flex flex-col gap-2"; // Gap between label and input container
+const sectionGapClass = "space-y-6";
 
 const Form = () => {
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<FormValues>({
     firstName: "",
     lastName: "",
     email: "",
@@ -29,15 +49,18 @@ const Form = () => {
 
   const [errors, setErrors] = useState<Errors>({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [name]: "" });
   };
 
   const validate = () => {
     const newErrors: Errors = {};
-    Object.entries(values).forEach(([key, value]) => {
-      if (key !== "newsletter" && !value) {
+    (Object.keys(values) as (keyof FormValues)[]).forEach((key) => {
+      if (key !== "newsletter" && !values[key]) {
         newErrors[key] = "This field is required";
       }
     });
@@ -56,7 +79,7 @@ const Form = () => {
 
   return (
     <form
-      className="space-y-6"
+      className={sectionGapClass}
       onSubmit={(e) => {
         e.preventDefault();
         validate();
@@ -64,119 +87,116 @@ const Form = () => {
     >
       {/* Names */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {["firstName", "lastName"].map((field) => (
-          <div key={field} className="space-y-2">
-            <Label className="input-label text-[#666] capitalize">
+        {(["firstName", "lastName"] as const).map((field) => (
+          <div key={field} className={fieldGapClass}>
+            <Label className={cn(labelClass, "capitalize")}>
               {field.replace("Name", " Name")} *
             </Label>
-            <Input
-              name={field}
-              value={(values as any)[field]}
-              onChange={handleChange}
-              className={cn(
-                "h-12 rounded-xl",
-                errors[field] && "border-red-400 focus-visible:ring-red-200"
-              )}
-            />
-            {errors[field] && (
-              <p className="text-xs text-red-500">{errors[field]}</p>
-            )}
+            <div className="flex flex-col gap-2">
+              <Input
+                name={field}
+                value={values[field]}
+                onChange={handleChange}
+                className={cn(
+                  inputClass,
+                  errors[field] && "border-red-400 focus-visible:ring-red-200"
+                )}
+              />
+              {errors[field] && <p className={errorClass}>{errors[field]}</p>}
+            </div>
           </div>
         ))}
       </div>
 
       {/* Email + Company */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {["email", "companyName"].map((field) => (
-          <div key={field} className="space-y-2">
-            <Label className="input-label text-[#666] capitalize">
+        {(["email", "companyName"] as const).map((field) => (
+          <div key={field} className={fieldGapClass}>
+            <Label className={cn(labelClass, "capitalize")}>
               {field === "companyName" ? "Company Name" : "Email"} *
             </Label>
-            <Input
-              type={field === "email" ? "email" : "text"}
-              name={field}
-              value={(values as any)[field]}
-              onChange={handleChange}
-              className={cn(
-                "h-12 rounded-xl",
-                errors[field] && "border-red-400 focus-visible:ring-red-200"
-              )}
-            />
-            {errors[field] && (
-              <p className="text-xs text-red-500">{errors[field]}</p>
-            )}
+            <div className="flex flex-col gap-2">
+              <Input
+                type={field === "email" ? "email" : "text"}
+                name={field}
+                value={values[field]}
+                onChange={handleChange}
+                className={cn(
+                  inputClass,
+                  errors[field] && "border-red-400 focus-visible:ring-red-200"
+                )}
+              />
+              {errors[field] && <p className={errorClass}>{errors[field]}</p>}
+            </div>
           </div>
         ))}
       </div>
 
       {/* Website + Company Size */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <Label className="input-label text-[#666]">Website *</Label>
-          <Input
-            name="website"
-            value={values.website}
-            onChange={handleChange}
-            className={cn(
-              "h-12 rounded-xl",
-              errors.website && "border-red-400 focus-visible:ring-red-200"
-            )}
-          />
-          {errors.website && (
-            <p className="text-xs text-red-500">{errors.website}</p>
-          )}
+        <div className={fieldGapClass}>
+          <Label className={labelClass}>Website *</Label>
+          <div className="flex flex-col gap-2">
+            <Input
+              name="website"
+              value={values.website}
+              onChange={handleChange}
+              className={cn(
+                inputClass,
+                errors.website && "border-red-400 focus-visible:ring-red-200"
+              )}
+            />
+            {errors.website && <p className={errorClass}>{errors.website}</p>}
+          </div>
         </div>
 
-        <div className="space-y-2">
-          <Label className="input-label text-[#666]">Company Size *</Label>
-          <Select
-            onValueChange={(v) => {
-              setValues({ ...values, companySize: v });
-              setErrors({ ...errors, companySize: "" });
-            }}
-          >
-            <SelectTrigger
-              className={cn(
-                "h-12 rounded-xl",
-                errors.companySize && "border-red-400"
-              )}
+        <div className={fieldGapClass}>
+          <Label className={labelClass}>Company Size *</Label>
+          <div className="flex flex-col gap-2">
+            <Select
+              onValueChange={(v) => {
+                setValues({ ...values, companySize: v });
+                setErrors({ ...errors, companySize: "" });
+              }}
             >
-              <SelectValue placeholder="Select company size" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="1-10">1–10 employees</SelectItem>
-              <SelectItem value="11-50">11–50 employees</SelectItem>
-              <SelectItem value="51-200">51–200 employees</SelectItem>
-              <SelectItem value="201-500">201–500 employees</SelectItem>
-              <SelectItem value="501+">501+ employees</SelectItem>
-            </SelectContent>
-          </Select>
-          {errors.companySize && (
-            <p className="text-xs text-red-500">{errors.companySize}</p>
-          )}
+              <SelectTrigger
+                id="company-size-select"
+                className={cn(
+                  inputClass,
+                  errors.companySize && "border-red-400"
+                )}
+              >
+                <SelectValue placeholder="Select company size" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1-10">1–10 employees</SelectItem>
+                <SelectItem value="11-50">11–50 employees</SelectItem>
+                <SelectItem value="51-200">51–200 employees</SelectItem>
+                <SelectItem value="201-500">201–500 employees</SelectItem>
+                <SelectItem value="501+">501+ employees</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.companySize && (
+              <p className={errorClass}>{errors.companySize}</p>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Message */}
-      <div className="space-y-2">
-        <Label className="input-label text-[#666]">
-          What can we help you with? *
-        </Label>
-        <textarea
-          name="message"
-          value={values.message}
-          onChange={handleChange}
-          className={cn(
-            "w-full min-h-[120px] rounded-xl border px-3 py-2 focus-visible:ring-2 focus-visible:ring-blue-200",
-            errors.message && "border-red-400"
-          )}
-        />
-        {errors.message && (
-          <p className="text-xs text-red-500">{errors.message}</p>
-        )}
+      <div className={fieldGapClass}>
+        <Label className={labelClass}>What can we help you with? *</Label>
+        <div className="flex flex-col gap-2">
+          <textarea
+            name="message"
+            value={values.message}
+            onChange={handleChange}
+            className={cn(textareaClass, errors.message && "border-red-400")}
+          />
+          {errors.message && <p className={errorClass}>{errors.message}</p>}
+        </div>
       </div>
 
-      {/* Newsletter */}
       <label className="flex items-start gap-3 text-sm text-[#666]">
         <input
           type="checkbox"
@@ -189,13 +209,8 @@ const Form = () => {
         Get the latest tips, tricks and trends in your inbox.
       </label>
 
-      {/* Submit */}
-      <div className="pt-4 flex justify-center">
-        <Button
-          type="submit"
-          disabled={!isValid}
-          className="px-10 rounded-full bg-blue-500 hover:bg-blue-600 disabled:opacity-40"
-        >
+      <div className="flex justify-center">
+        <Button type="submit" disabled={!isValid}>
           Submit
         </Button>
       </div>
