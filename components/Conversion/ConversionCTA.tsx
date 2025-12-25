@@ -19,7 +19,7 @@ const ConversionCTA = ({
   return (
     <Wrapper>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-x-16 items-center">
-        <div className="flex flex-col gap-12 mt-10 ">
+        <div className="flex flex-col gap-12 mt-10">
           <p className="paragraph">{firstParagraph}</p>
 
           <Link
@@ -31,14 +31,14 @@ const ConversionCTA = ({
         </div>
 
         <div className="relative">
-          <div className="border absolute -top-40 rounded-[15px] input w-full max-w-lg justify-self-end p-2 bg-white">
+          <div className="border absolute -top-40 rounded-[15px] input w-full max-w-lg p-2 bg-white">
             <Chart01 />
           </div>
         </div>
       </section>
 
       <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-16 items-center pb-32">
-        <div className="border rounded-[15px] input w-full max-w-lg justify-self-start p-2 bg-white md:order-1 order-2">
+        <div className="border rounded-[15px] input w-full max-w-lg p-2 bg-white md:order-1 order-2">
           <Chart02 />
         </div>
 
