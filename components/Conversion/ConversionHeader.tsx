@@ -1,12 +1,11 @@
 "use client";
 
 import Header from "@/components/Header";
-import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
 
 export default function ConversionHeader() {
   return (
-    <div className="relative min-h-144 flex items-center">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+    <div className="fixed inset-x-0 top-0 z-10 min-h-144 flex items-center pointer-events-none">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pointer-events-auto">
         <Header
           width="wide"
           title="Purchase and Conversion Tracking"
