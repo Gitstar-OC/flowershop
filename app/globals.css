@@ -30,7 +30,7 @@ body {
 }
 
 .mini-text {
-  @apply text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] max-w-4xl text-balance;
+  @apply text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] max-w-4xl;
 }
 
 .border-shadow {
@@ -48,6 +48,19 @@ body {
     0 1px 2px -1px rgba(15, 15, 15, 0.10),
     0 0 0 1px rgba(15, 15, 15, 0.10); 
 }
+
+/* .shadow-hover{
+  box-shadow: none;
+} */
+
+.shadow-hover:hover {
+  box-shadow:
+    0 0 20px 0 rgba(0,0,0,0.08),   /* Increased from 0.06 to 0.15 */
+    0 2px 4px 0 rgba(0,0,0,0.08),  /* Increased from 0.07 to 0.08 */
+    0 1px 2px -1px rgba(0,0,0,0.08), /* Increased from 0.07 to 0.08 */
+    0 0 0 1px rgba(0,0,0,0.08);     /* Increased from 0.07 to 0.08 */
+}
+
 
 .shadow{
   box-shadow:
