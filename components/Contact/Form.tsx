@@ -210,7 +210,7 @@ const Form = () => {
       </label>
 
       <div className="flex justify-center">
-        <Button type="submit" disabled={!isValid}>
+        <Button type="submit" className="w-30 h-9 mini-text" disabled={!isValid}>
           Submit
         </Button>
       </div>

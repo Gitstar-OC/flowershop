@@ -11,7 +11,7 @@ const HEADER_WIDTHS = {
   },
   wide: {
     title: "max-w-2xl",
-    description: "max-w-5xl",
+    description: "max-w-2xl",
   },
   full: {
     title: "max-w-5xl",

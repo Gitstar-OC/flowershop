@@ -1,12 +1,11 @@
 "use client";
 
 import Header from "@/components/Header";
-import { ButtonGroup } from "@/components/Button";
-import { InteractiveGridPattern } from '@/components/InteractiveGridPattern'
+import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
 
-export default function TrackingPixel() {
+export default function ConversionHeader() {
   return (
-    <div className="relative overflow-hidden border-y input min-h-144">
+    <div className="relative overflow-hidden -mt-13 input min-h-144">
       <div className="absolute inset-0">
         <span
           className="absolute inset-0"
@@ -21,7 +20,7 @@ export default function TrackingPixel() {
         absolute inset-0
         mask-[radial-gradient(ellipse_at_50%_50%,white_0%,transparent_70%)]
       "
-    /*
+          /*
     - mask-image: Defines a grayscale/alpha image that decides what parts of the element are visible. 
     - radial-gradient(...): Generates that image procedurally instead of using a file.
     - Inside the gradient: 
@@ -39,15 +38,9 @@ export default function TrackingPixel() {
 
       <div className="relative z-10 min-h-144 max-w-7xl mx-auto px-4 md:px-8 lg:px-16 flex flex-col justify-center gap-6">
         <Header
-          title="Track Every Sale. Measure Every Success."
-          description="Understand the full journey of your customers — from first click to final purchase."
-        />
-        <ButtonGroup
-          primaryButtonChildren="Purchase Pixel"
-          secondaryButtonChildren="Learn More"
-          primaryButtonHref="/contact"
-          secondaryButtonHref="/conversion"
-          buttonVariant="ghost"
+          width="wide"
+          title="Purchase and Conversion Tracking"
+          description="A simple way to understand which ads lead to visits, purchases, and meaningful activity on your site."
         />
       </div>
     </div>

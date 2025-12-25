@@ -30,7 +30,7 @@ const Campaigns = () => {
               justify-between
               p-20
               bg-white
-              border-shadow
+              input
               rounded-t-2xl
             "
           >

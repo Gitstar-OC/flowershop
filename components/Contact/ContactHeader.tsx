@@ -31,7 +31,7 @@ const ContactHeader = () => {
       <Wrapper>
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           <div className="w-full lg:w-1/2 space-y-10">
-            <div className="max-w-xl space-y-5 pt-12">
+            <div className="max-w-xl space-y-4 pt-12">
               <h1 className="heading">
                 Join the list of brands that advertise with us!
               </h1>

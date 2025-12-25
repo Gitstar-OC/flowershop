@@ -3,7 +3,7 @@ import { ButtonGroup } from "../Button";
 
 const FooterCTA = () => {
   return (
-    <div className="flex flex-col lg:h-120 justify-center border-y border-shadow gap-3.75">
+    <div className="flex flex-col lg:h-120 justify-center border-y input gap-3.75">
       <Header
         title="Ready to take your 
 brand to the next level. "
