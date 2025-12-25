@@ -3,6 +3,24 @@ import { Button } from "../Button";
 import Header from "../Header";
 import Image from "next/image";
 import { useState } from "react";
+import { ArrowRight } from "../Vector";
+
+/*
+
+
+
+
+CURSOR INTO MAP PIN WHEN HOVERED OVER THE IMAGE OR THE ADDRESS
+
+
+
+
+
+
+
+
+
+*/
 
 const Offices = () => {
   const [currentOfficeIndex, setCurrentOfficeIndex] = useState(0);
@@ -25,29 +43,53 @@ const Offices = () => {
     ].image;
 
   return (
-    <div>
+    <div className="pb-20">
       <Header title="Our Offices" />
 
-      <div>
-        <Image src={previousCityImage} alt="Office" width={400} height={400} />
+      <div className="mt-20 flex items-start gap-20">
+        <div className="relative h-100">
+          <div className="absolute -left-10 top-10 scale-95 opacity-40 z-0 rounded-xl overflow-hidden">
+            <Image
+              src={previousCityImage}
+              alt="Office"
+              width={520}
+              height={340}
+            />
+          </div>
 
-        <div>
-          <Image
-            src={currentOfficeImage}
-            alt="Office"
-            width={400}
-            height={400}
-          />
+          <div className="absolute -right-10 top-10 scale-95 opacity-40 z-0 rounded-xl overflow-hidden">
+            <Image src={nextCityImage} alt="Office" width={520} height={340} />
+          </div>
+
+          <div className="relative z-10 p-4 bg-white rounded-[14px] shadow">
+            <Image
+              src={currentOfficeImage}
+              alt="Office"
+              width={675}
+              height={400}
+              className="rounded-2xl"
+            />
+          </div>
         </div>
-        <Image src={nextCityImage} alt="Office" width={400} height={400} />
-      </div>
-      <div>
-        <h1 className="big-paragraph">{currentCity}</h1>
-        <p className="subheading">{currentOfficeAddress}</p>
-        <a className="subheading">(602) 888-1581</a>
-        <Button variant={"secondary"} onClick={changeCity}>
-          {nextCity}
-        </Button>
+        <div className="flex-col items-start space-y-8">
+          <div className="max-w-md space-y-4 mr-auto">
+            <h1 className="big-paragraph">{currentCity}</h1>
+
+            <p className="subheading text-balance whitespace-pre-line">
+              {currentOfficeAddress}
+            </p>
+
+            <a className="subheading hover:underline">(602) 888-1581</a>
+          </div>
+          <Button
+            variant={"secondary"}
+            className="cursor-pointer"
+            onClick={changeCity}
+          >
+            {nextCity}{" "}
+            <ArrowRight className="ml-2 mt-px transition-transform duration-200 group-hover:translate-x-0.5" />
+          </Button>
+        </div>
       </div>
     </div>
   );

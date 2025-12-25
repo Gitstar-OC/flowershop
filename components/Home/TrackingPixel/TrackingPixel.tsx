@@ -47,6 +47,7 @@ export default function TrackingPixel() {
           secondaryButtonChildren="Learn More"
           primaryButtonHref="/contact"
           secondaryButtonHref="/conversion"
+          buttonVariant="ghost"
         />
       </div>
     </div>

@@ -59,7 +59,7 @@ const ContactHeader = () => {
           </div>
 
           <div className="w-full lg:w-1/2 flex justify-end">
-            <div className="w-full max-w-130 bg-white rounded-3xl shadow p-8">
+            <div className="w-full max-w-130 bg-white rounded-2xl shadow p-8">
               <Form />
             </div>
           </div>

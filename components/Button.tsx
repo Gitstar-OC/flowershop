@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost:
           "text-[#333] active:scale-98 hover:bg-[#f3f3f3] select-none font-medium",
         secondary:
-          "border active:scale-98 select-none text-[#666] hover:text-[#444] border-none bg-[#f3f3f3] text-center ",
+          "border active:scale-98 group select-none text-[#666] hover:text-[#444] border-none bg-[#f3f3f3] text-center ",
       },
       size: {
         default: "h-8",
@@ -47,18 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {variant === "secondary" ? (
-          <>
-            {children}{" "}
-            <ArrowRight
-              color="#888"
-              strokeWidth={2}
-              className="ml-2 mt-px transition-transform duration-200 group-hover:translate-x-0.5"
-            />
-          </>
-        ) : (
-          children
-        )}
+        {children}
       </Comp>
     );
   }
@@ -70,6 +59,7 @@ interface ButtonGroupProps {
   secondaryButtonChildren: React.ReactNode;
   primaryButtonHref?: string;
   secondaryButtonHref?: string;
+  buttonVariant?: "secondary" | "ghost";
 }
 
 const ButtonGroup = ({
@@ -77,6 +67,7 @@ const ButtonGroup = ({
   secondaryButtonChildren,
   primaryButtonHref = "/",
   secondaryButtonHref = "/",
+  buttonVariant = "secondary",
 }: ButtonGroupProps) => {
   return (
     <div className="flex items-center justify-center gap-2">
@@ -84,11 +75,18 @@ const ButtonGroup = ({
         {primaryButtonChildren}
       </Link>
       <Link
-        className={cn(buttonVariants({ variant: "secondary" }), "group")}
+        className={cn(buttonVariants({ variant: buttonVariant }), "group")}
         href={secondaryButtonHref}
       >
-        {secondaryButtonChildren}{" "}
-        <ArrowRight className={cn("ml-2 mt-px transition-transform duration-200 group-hover:translate-x-0.5")} />{" "}
+        {secondaryButtonChildren}
+        <>
+          {" "}
+          <ArrowRight
+            className={cn(
+              "ml-2 mt-px transition-transform duration-200 group-hover:translate-x-0.5"
+            )}
+          />
+        </>
       </Link>
     </div>
   );
