@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+body {
+    @apply selection:bg-blue-500/5 selection:text-blue-500
+}
+
 .heading {
   @apply text-[28px]/[30px] tracking-[-0.01em] sm:text-[30px]/[32px] md:text-[34px]/[38px] lg:text-[40px]/[44px] font-medium text-balance;
 }
