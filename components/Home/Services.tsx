@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import Header from "../Header";
 
@@ -46,30 +46,47 @@ export default function ServicesSection() {
   const [active, setActive] = useState(0);
   const service = services[active];
   const modalRef = useRef<HTMLDivElement>(null);
-  const [modalHeight, setModalHeight] = useState(0);
+  const [modalHeight, setModalHeight] = useState(510);
 
-  useEffect(() => {
+  // To make padding static based on the largest modal height:
+  // 1. Calculate the max height across all services (you can do this manually or with a helper)
+  // const maxModalHeight = Math.max(
+  //   ...services.map((_, index) => {
+  // Temporarily set active to index, measure height, then reset
+  // Or hardcode after measuring: e.g., 520 for all since max-h-[520px]
+  //     return 520; // Assuming all fit within max-height
+  //   })
+  // );
+  // const staticPadding = maxModalHeight + 100; // Add buffer
+  // Then replace the dynamic style with: style={{ paddingBottom: staticPadding }}
+  // And remove modalRef, modalHeight state, and useLayoutEffect
+
+  useLayoutEffect(() => {
     if (modalRef.current) {
       setModalHeight(modalRef.current.offsetHeight);
     }
   }, [active]);
 
   return (
-    <section className="relative w-full bg-[#fafafa] pt-20" style={{ paddingBottom: (modalHeight + 50)/3 }}>
+    <section
+      className="relative w-full bg-white pt-20"
+      style={{ paddingBottom: (modalHeight + 50) / 3 }}
+    >
       <div className="flex justify-center mb-20">
         <Header
-          title="Ready to take your 
-brand to the next level."
-          description="Choose your campaign goal and we’ll help you launch compliant ads that reach real cannabis consumers"
+          title="Your Brand, Amplified"
+          description="Innovative multi-channel advertising for the cannabis industry."
         />
       </div>
 
       <div className="relative max-w-6xl mx-auto">
         {/* TABLE SYSTEM */}
-        <div className="relative bg-[#fcfcfc] border border-[#dddddd] rounded-[10px] overflow-visible">
+        <div className="relative bg-[#fcfcfc] border-t border-l border-[#dddddd] rounded-[10px] overflow-visible">
           <div className="grid grid-cols-[300px_1fr]">
             {/* LEFT TABLE — UNCHANGED */}
-            <div className="outline outline-[#dddddd] rounded-[10px]">
+            <div className="
+            outline outline-border rounded-[10px]">
+                {/* shadow-[1px_0_0_0_#dddddd] rounded-[10px] */}
               {services.map((item, index) => {
                 const isActive = index === active;
                 return (
@@ -77,7 +94,7 @@ brand to the next level."
                     key={item.title}
                     onClick={() => setActive(index)}
                     className={`px-8 py-3 cursor-pointer rounded-xl ${
-                      isActive ? "bg-white font-semibold" : "bg-[#fafafa]"
+                      isActive ? "bg-white font-semibold" : "bg-[#fcfcfc]"
                     }`}
                   >
                     <div className="paragraph">{item.title}</div>
@@ -92,7 +109,7 @@ brand to the next level."
 
           {/* ABSOLUTE DIALOG (OUT, ABOVE MASK, NO LAYOUT IMPACT) */}
           <div ref={modalRef} className="absolute -top-8 right-0 w-150 z-20">
-            <div className="relative shadow rounded-[10px] p-6 bg-white max-h-[520px] overflow-y-auto">
+            <div className="relative shadow rounded-[10px] p-6 bg-white max-h-130 overflow-y-auto">
               <div className="big-paragraph mb-3">{service.title}</div>
 
               <Image
@@ -102,19 +119,18 @@ brand to the next level."
                 alt="service"
               />
 
-              <p className="mt-4 text-[18px] leading-8 text-[#333]">
+              <p className="mt-4 mini-text text-[#333]">
                 {service.content}
               </p>
             </div>
           </div>
 
           {/* TABLE MASK — CARD ABOVE THIS */}
-          <div className="pointer-events-none absolute left-0 right-0 bottom-0 h-10 bg-linear-to-t from-[#fafafa] to-transparent z-10" />
+          {/* <div className="pointer-events-none  absolute -left-2 right-0 bottom-0 h-10 bg-linear-to-t from-[#fafafa] to-transparent z-10" /> */}
         </div>
       </div>
 
       {/* GLOBAL MASK */}
-      <div className="pointer-events-none absolute left-0 right-0 bottom-0 h-32 bg-linear-to-t from-[#fafafa] to-transparent" />
     </section>
   );
 }

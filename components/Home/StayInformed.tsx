@@ -5,7 +5,7 @@ const StayInformed = () => {
   return (
     <div className="bg-[#fafafa]">
       <Wrapper>
-        <div className="bg-white flex flex-col lg:h-125 justify-between border-shadow rounded-b-2xl">
+        <div className="bg-white flex flex-col lg:h-125 justify-between border-shadow">
           <div className=" flex flex-1 items-center">
             <Header
               width="full"

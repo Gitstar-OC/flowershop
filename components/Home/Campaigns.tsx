@@ -64,16 +64,16 @@ const Campaigns = () => {
             <div className="flex items-center justify-center ml-12">
               <div className="relative">
                 {/* LEFT vertical stroke */}
-                <span className="absolute right-0 -top-7 -bottom-7 w-px bg-black/30" />
+                <span className="absolute right-0 -top-7 -bottom-7 w-px bg-border" />
 
                 {/* RIGHT vertical stroke */}
-                <span className="absolute -top-7 -bottom-7 w-px bg-black/30" />
+                <span className="absolute -top-7 -bottom-7 w-px bg-border" />
 
                 {/* TOP horizontal stroke */}
-                <span className="absolute -left-7 -right-7 top-0 h-px bg-black/30" />
+                <span className="absolute -left-7 -right-7 top-0 h-px bg-border" />
 
                 {/* BOTTOM horizontal stroke */}
-                <span className="absolute -left-7 -right-7 bottom-0 h-px bg-black/30" />
+                <span className="absolute -left-7 -right-7 bottom-0 h-px bg-border" />
 
                 <div className="w-80 h-80 bg-white flex flex-col items-center justify-center">
                   <span className="text-6xl mt-4 font-medium tracking-tight">
