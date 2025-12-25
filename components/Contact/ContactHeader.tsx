@@ -14,10 +14,22 @@ const EMAIL = "help@flowershop.com";
 
 const ContactHeader = () => {
   return (
-    <div className="bg-white py-12">
+    <div className="py-12 relative">
+      <div
+        className="
+          absolute
+          left-0
+          right-0
+          bottom-0
+          h-[94%]
+          bg-[linear-gradient(to_bottom,#fcfcfc_0%,#fcfcfc_30%,white_100%)]
+          input
+          -z-1
+        "
+      />
+
       <Wrapper>
         <div className="flex flex-col lg:flex-row gap-16 items-start">
-          {/* Left */}
           <div className="w-full lg:w-1/2 space-y-10">
             <div className="max-w-xl space-y-5 pt-12">
               <h1 className="heading">
@@ -29,7 +41,6 @@ const ContactHeader = () => {
               </p>
             </div>
 
-            {/* Logos */}
             <ul className="flex gap-6">
               {LOGOS.map((src, i) => (
                 <li key={i} className="w-16 h-10">
@@ -44,7 +55,6 @@ const ContactHeader = () => {
               ))}
             </ul>
 
-            {/* Press */}
             <div className="pt-20 space-y-2">
               <h3 className="subheading">Are you a member of the press?</h3>
               <p className="input-label text-[#666]">

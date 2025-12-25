@@ -71,7 +71,7 @@ const Offices = () => {
             />
           </div>
         </div>
-        <div className="flex-col items-start space-y-8">
+        <div className="flex-col items-start ">
           <div className="max-w-md space-y-4 mr-auto">
             <h1 className="big-paragraph">{currentCity}</h1>
 

@@ -32,7 +32,7 @@ const textareaClass =
   "w-full min-h-32 rounded-[10px] border-none border px-3 py-2 focus-visible:ring-2 focus-visible:ring-blue-200 [box-shadow:0_1px_2px_-1px_rgba(15,15,15,0.10),0_0_0_1px_rgba(15,15,15,0.10)]";
 const labelClass = "input-label text-[#666]";
 const errorClass = "text-xs text-red-500";
-const fieldGapClass = "flex flex-col gap-2"; // Gap between label and input container
+const fieldGapClass = "flex flex-col gap-3"; // Gap between label and input container
 const sectionGapClass = "space-y-6";
 
 const Form = () => {
