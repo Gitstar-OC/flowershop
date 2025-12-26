@@ -1,10 +1,10 @@
 "use client";
 
-import { BsTwitterX, BsLinkedin, BsFacebook, BsReddit } from "react-icons/bs";
+import { BsTwitterX, BsLinkedin } from "react-icons/bs";
+import { AiFillFacebook } from "react-icons/ai";
+import { FaSquareReddit } from "react-icons/fa6";
 
 export default function ShareIcons({ title }: { title: string }) {
-  if (typeof window === "undefined") return null;
-
   const url = window.location.href;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
@@ -23,12 +23,12 @@ export default function ShareIcons({ title }: { title: string }) {
     {
       label: "Facebook",
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      icon: <BsFacebook className="h-4 w-4" />,
+      icon: <AiFillFacebook className="h-4 w-4" />,
     },
     {
       label: "Reddit",
       href: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
-      icon: <BsReddit className="h-4 w-4" />,
+      icon: <FaSquareReddit className="h-4 w-4" />,
     },
   ];
 
@@ -41,7 +41,7 @@ export default function ShareIcons({ title }: { title: string }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={item.label}
-          className="h-9 w-9 flex items-center justify-center rounded border border-[#DDD] text-[#111] hover:bg-[#F5F5F5]"
+          className="h-9 w-9 flex items-center justify-center rounded text-[#111] hover:bg-[#F5F5F5]"
         >
           {item.icon}
         </a>

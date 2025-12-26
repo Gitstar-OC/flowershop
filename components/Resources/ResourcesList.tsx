@@ -18,7 +18,7 @@ export function ResourceList({ resources }: ResourceListProps) {
     <Wrapper>
       <section className="relative flex justify-center">
         {/* Sheet container */}
-        <div className="relative -top-8 w-full max-w-4xl space-y-5 sm:px-0">
+        <div className="relative -top-8 w-full max-w-180 space-y-5 sm:px-0">
           {resources.map((article) => (
             <Link
               key={article.slug}
