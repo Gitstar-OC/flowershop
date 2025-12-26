@@ -16,10 +16,6 @@ CURSOR INTO MAP PIN WHEN HOVERED OVER THE IMAGE OR THE ADDRESS
 
 
 
-
-
-
-
 */
 
 const Offices = () => {
