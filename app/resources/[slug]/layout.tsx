@@ -87,9 +87,7 @@ export default async function ResourceLayout({ children, params }: Props) {
               </Link>
 
               <div className="space-y-3">
-                <p className="input-label">
-                  Subscribe to our Newsletter
-                </p>
+                <p className="input-label">Subscribe to our Newsletter</p>
 
                 <div className="flex gap-2">
                   <input
@@ -108,10 +106,13 @@ export default async function ResourceLayout({ children, params }: Props) {
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <p className="text-xs uppercase tracking-wide">
+              <div className="pr-22">
+                <p className="text-xs uppercase tracking-wide mb-1">
                   Share this article
                 </p>
+
+                <div className="border-t border-[#EEE] " />
+
                 <ShareIcons title={currentData.title} />
               </div>
             </div>
@@ -131,7 +132,13 @@ export default async function ResourceLayout({ children, params }: Props) {
               <div className="mt-12">{children}</div>
 
               <div className="mt-20 pt-8">
-                <div className={`grid gap-4 ${previous && next ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
+                <div
+                  className={`grid gap-4 ${
+                    previous && next
+                      ? "grid-cols-1 md:grid-cols-2"
+                      : "grid-cols-1"
+                  }`}
+                >
                   {previous ? (
                     <Link
                       href={`/resources/${previous.slug}`}
@@ -153,7 +160,9 @@ export default async function ResourceLayout({ children, params }: Props) {
                   {next ? (
                     <Link
                       href={`/resources/${next.slug}`}
-                      className={`group rounded-[10px] bg-[#fcfcfc] hover:bg-[#fafafa] input px-2 py-3 flex flex-col gap-1 ${previous && next ? 'text-right md:ml-auto' : ''}`}
+                      className={`group rounded-[10px] bg-[#fcfcfc] hover:bg-[#fafafa] input px-2 py-3 flex flex-col gap-1 ${
+                        previous && next ? "text-right md:ml-auto" : ""
+                      }`}
                     >
                       <span className="flex text-[#444] items-center justify-end gap-1 text-sm opacity-70">
                         <span>Next post</span>
