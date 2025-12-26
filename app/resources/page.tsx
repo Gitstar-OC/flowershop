@@ -59,7 +59,6 @@ export default async function Page() {
 
   return (
     <main className="relative w-full">
-      {/* FIXED HERO BACKGROUND */}
       <div className="fixed inset-0 -mt-13 z-0 overflow-hidden pointer-events-none">
         <Image
           src="/assets/Resources.png"
@@ -70,17 +69,13 @@ export default async function Page() {
           className="object-cover"
         />
 
-        {/* OPTIONAL MASK (same idea as grid mask) */}
-        <div className="absolute inset-0 bg-linear-to-b from-white/0 via-white/30 to-white/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-white/0 via-white/30 to-white/60" />
       </div>
 
-      {/* FIXED HEADER TEXT (ON TOP OF IMAGE) */}
       <ResourcesHeader />
 
-      {/* SPACE RESERVED FOR HERO */}
       <div className="h-[85svh]" />
 
-      {/* FOREGROUND SHEET */}
       <div className="relative z-20 rounded-t-[24px] bg-[#FBFBFB] input">
         <ResourceList resources={resources} />
       </div>

@@ -72,12 +72,13 @@ export default async function ResourceLayout({ children, params }: Props) {
   }
 
   return (
-    <Wrapper>
-      <section className="relative pt-32 pb-40">
-        <div className="relative flex">
+    <div className="noise -mt-13">
+      <Wrapper>
+        <section className="relative pt-52 pb-40">
+          <div className="relative flex">
           {/* SIDEBAR */}
           <aside className="hidden lg:block w-60">
-            <div className="sticky top-32 flex flex-col gap-12 text-sm text-[#666]">
+            <div className="sticky top-20 flex flex-col gap-12 text-sm text-[#666]">
               <Link
                 href="/resources"
                 className="flex opacity-70 transition-opacity duration-300 hover:opacity-100 items-center gap-2 mini-text "
@@ -183,5 +184,6 @@ export default async function ResourceLayout({ children, params }: Props) {
         </div>
       </section>
     </Wrapper>
+    </div>
   );
 }
