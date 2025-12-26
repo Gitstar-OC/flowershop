@@ -10,12 +10,22 @@ export interface StatsProps {
 
 export type StatsPosition = "floating-right" | "floating-left";
 
+interface BrowserWindowProps {
+  windowTitle: string;
+  children: React.ReactNode;
+  stats?: StatsProps[];
+  statsPosition?: StatsPosition;
+  insidePercentage?: number;
+  atPercent?: number;
+  index?: number;
+}
+
 export const Stats = ({ title, miniTitle, description }: StatsProps) => {
   return (
-    <div className="w-[220px] rounded-[10px] bg-white px-5 py-4 border shadow-xl">
-      <h4 className="text-xs text-[#666]">{miniTitle}</h4>
-      <h3 className="mt-1 text-lg font-semibold">{title}</h3>
-      <p className="mt-1 text-sm text-[#777] leading-snug">{description}</p>
+    <div className="w-55 rounded-[10px] bg-white px-4 py-2 border input">
+      <h4 className="text-[#666]">{miniTitle}</h4>
+      <h3 className="mt-1 heading-small">{title}</h3>
+      <p className="mt-1 mini-text">{description}</p>
     </div>
   );
 };
@@ -30,31 +40,40 @@ const MacButton = ({ color }: { color: "red" | "yellow" | "green" }) => {
   return <div className={`h-3.5 w-3.5 rounded-full ${colors[color]}`} />;
 };
 
-interface BrowserWindowProps {
-  windowTitle: string;
-  children: React.ReactNode;
-  stats?: StatsProps[];
-  statsPosition?: StatsPosition;
-}
-
 export default function BrowserWindow({
   windowTitle,
   children,
   stats = [],
   statsPosition = "floating-right",
+  insidePercentage = 0,
+  atPercent = 30,
+  index = 0,
 }: BrowserWindowProps) {
-  const hasStats = stats.length > 0;
+  const inside = Math.min(100, Math.max(0, insidePercentage));
+  const at = Math.min(100, Math.max(0, atPercent));
+  const translateAmount = 35 - inside * 0.35;
 
   return (
-    <div className="relative flex justify-center py-24">
+    <div
+      className="sticky flex justify-center py-24"
+      style={{
+        top: `${96 + index * 56}px`,
+        zIndex: 1000 + index,
+      }}
+    >
       <div className="relative">
-        {hasStats && (
+        {stats.length > 0 && (
           <div
-            className={`absolute z-30 flex flex-col gap-4 top-14 ${
-              statsPosition === "floating-right"
-                ? "right-0 translate-x-[35%] -translate-y-[25%]"
-                : "left-0 -translate-x-[35%] -translate-y-[25%]"
-            }`}
+            className="absolute z-[6000] flex flex-col gap-4"
+            style={{
+              top: `${at}%`,
+              transform:
+                statsPosition === "floating-right"
+                  ? `translate(${translateAmount}%, -50%)`
+                  : `translate(-${translateAmount}%, -50%)`,
+              right: statsPosition === "floating-right" ? 0 : "auto",
+              left: statsPosition === "floating-left" ? 0 : "auto",
+            }}
           >
             {stats.map((stat, i) => (
               <Stats key={i} {...stat} />
@@ -62,13 +81,14 @@ export default function BrowserWindow({
           </div>
         )}
 
-        <div className="relative z-10 w-[560px] h-[420px] overflow-hidden rounded-[12px] border bg-white shadow-2xl">
+        <div className="relative w-[560px] h-[420px] overflow-hidden rounded-[12px] border bg-white shadow">
           <div className="relative flex h-12 items-center border-b bg-[#fafafa] px-4">
             <div className="flex gap-2">
               <MacButton color="red" />
               <MacButton color="yellow" />
               <MacButton color="green" />
             </div>
+
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
               <span className="font-mono text-sm text-[#666]">
                 {windowTitle}
