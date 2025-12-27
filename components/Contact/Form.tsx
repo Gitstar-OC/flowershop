@@ -28,7 +28,7 @@ type FormValues = {
 type Errors = Partial<Record<keyof FormValues, string>>;
 
 const inputClass =
-  "w-full h-10 rounded-[10px] border-none [box-shadow:0_1px_2px_-1px_rgba(15,15,15,0.10),0_0_0_1px_rgba(15,15,15,0.10)]";
+  "w-full h-12 rounded-[10px] border-none input"
 const textareaClass =
   "w-full min-h-32 rounded-[10px] border-none border px-3 py-2 focus-visible:ring-2 focus-visible:ring-blue-200 [box-shadow:0_1px_2px_-1px_rgba(15,15,15,0.10),0_0_0_1px_rgba(15,15,15,0.10)]";
 const labelClass = "input-label text-[#666]";

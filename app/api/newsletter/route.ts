@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     // Check write access
     const settingsResponse = await sheets.spreadsheets.values.get({
       spreadsheetId: SHEET_ID,
-      range: `${SHEET_NAME}!P1`,
+      range: `${SHEET_NAME}!K:L`,
     });
     const settingsValue = settingsResponse.data.values?.[0]?.[0];
     if (settingsValue) {
@@ -45,9 +45,23 @@ export async function POST(request: NextRequest) {
     const newsletter: Newsletter = {
       email: body.email,
     };
+
+    // Check if email already exists
+    const existingResponse = await sheets.spreadsheets.values.get({
+      spreadsheetId: SHEET_ID,
+      range: `${SHEET_NAME}!L:L`, // Email column
+    });
+    const existingEmails = existingResponse.data.values?.flat() || [];
+    if (existingEmails.includes(body.email)) {
+      return NextResponse.json(
+        { error: "This email is already subscribed to the newsletter" },
+        { status: 409 }
+      );
+    }
+
     const values = [[new Date().toISOString(), body.email]];
 
-    const range = `${SHEET_NAME}!K`;
+    const range = `${SHEET_NAME}!K:L`;
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,

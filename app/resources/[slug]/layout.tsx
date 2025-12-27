@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import Wrapper from "@/components/Wrapper";
 import Link from "next/link";
 import ShareIcons from "@/components/Resources/ShareIcons";
+import NewsletterForm from "@/components/Resources/NewsletterForm";
 import { ArrowRight } from "@/components/Vector";
 
 type Props = {
@@ -88,26 +89,10 @@ export default async function ResourceLayout({ children, params }: Props) {
               </Link>
 
               <div className="space-y-3">
-                <p className="input-label">Subscribe to our Newsletter</p>
-
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="Email address"
-                    className="h-9 w-full rounded border border-[#DDD] px-3 text-[13px] focus:outline-none focus:border-[#111]"
-                  />
-                  <button
-                    type="submit"
-                    className="h-9 rounded bg-[#E6F0FF] px-3 text-[12px] text-[#2563EB] hover:bg-[#DCE9FF]"
-                  >
-                    Subscribe
-                  </button>
-                </div>
+                <NewsletterForm />
               </div>
 
-              <div className="pr-22">
+              {/* <div className="pr-22">
                 <p className="text-xs uppercase tracking-wide mb-1">
                   Share this article
                 </p>
@@ -115,7 +100,7 @@ export default async function ResourceLayout({ children, params }: Props) {
                 <div className="border-t border-[#EEE] " />
 
                 <ShareIcons title={currentData.title} />
-              </div>
+              </div> */}
             </div>
           </aside>
 
