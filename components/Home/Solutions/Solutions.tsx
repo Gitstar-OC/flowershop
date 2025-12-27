@@ -6,7 +6,8 @@ import { BrowserWindowStack } from "./BrowserWindowStack";
 const Solutions = () => {
   return (
     <Wrapper>
-      <div className="flex flex-col min-h-screen gap-16">
+      <div id="solutions" className="scroll-mt-20"/>
+      <div className="flex flex-col mt-20 min-h-screen">
         <Header
           title="Measurable results. Real impact."
           description="Outcomes our clients achieved using our platform."
@@ -23,7 +24,7 @@ const Solutions = () => {
               },
             ]}
             statsPosition="floating-left"
-            insidePercentage={30}
+            insidePercentage={70}
             atPercent={35}
           >
             <div className="h-full w-full rounded-md bg-gray-100" />
@@ -39,8 +40,8 @@ const Solutions = () => {
               },
             ]}
             statsPosition="floating-right"
-            insidePercentage={20}
-            atPercent={40}
+            insidePercentage={95}
+            atPercent={50}
           >
             <div className="h-full w-full rounded-md bg-gray-100" />
           </BrowserWindow>
@@ -55,7 +56,7 @@ const Solutions = () => {
               },
             ]}
             statsPosition="floating-left"
-            insidePercentage={10}
+            insidePercentage={60}
             atPercent={45}
           >
             <div className="h-full w-full rounded-md bg-gray-100" />

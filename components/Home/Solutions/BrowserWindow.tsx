@@ -8,7 +8,7 @@ export interface StatsProps {
   description: string;
 }
 
-export type StatsPosition = "floating-right" | "floating-left";
+export type StatsPosition = "floating-left" | "floating-right";
 
 interface BrowserWindowProps {
   windowTitle: string;
@@ -46,37 +46,44 @@ export default function BrowserWindow({
   stats = [],
   statsPosition = "floating-right",
   insidePercentage = 0,
-  atPercent = 30,
+  atPercent = 35,
   index = 0,
 }: BrowserWindowProps) {
   const inside = Math.min(100, Math.max(0, insidePercentage));
   const at = Math.min(100, Math.max(0, atPercent));
-  const translateAmount = 35 - inside * 0.35;
+
+
+  const TITLE_HEIGHT = 48;
+  const BASE_TOP = 96;
+
+  const windowZ = 100 + index;
+  const statsZ = windowZ + 50;
 
   return (
     <div
       className="sticky flex justify-center py-24"
       style={{
-        top: `${96 + index * 56}px`,
-        zIndex: 1000 + index,
+        top: BASE_TOP + index * 96,
+        zIndex: windowZ,
       }}
     >
       <div className="relative">
         {stats.length > 0 && (
           <div
-            className="absolute z-[6000] flex flex-col gap-4"
+            className="absolute flex flex-col gap-4"
             style={{
               top: `${at}%`,
+              zIndex: statsZ,
               transform:
                 statsPosition === "floating-right"
-                  ? `translate(${translateAmount}%, -50%)`
-                  : `translate(-${translateAmount}%, -50%)`,
+                  ? `translate(${inside}%, -50%)`
+                  : `translate(-${inside}%, -50%)`,
               right: statsPosition === "floating-right" ? 0 : "auto",
               left: statsPosition === "floating-left" ? 0 : "auto",
             }}
           >
-            {stats.map((stat, i) => (
-              <Stats key={i} {...stat} />
+            {stats.map((s, i) => (
+              <Stats key={i} {...s} />
             ))}
           </div>
         )}

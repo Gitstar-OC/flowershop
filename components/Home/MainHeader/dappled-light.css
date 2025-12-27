@@ -1,0 +1,86 @@
+
+:root {
+  /* === LEAVES LAYER SETTINGS === */
+  --leaves-opacity: 0.2;                /* 0-1: transparency of the shadow */
+  --leaves-position-x: center;           /* left, center, right, or % like 20% */
+  --leaves-position-y: center;           /* top, center, bottom, or % like 30% */
+  --leaves-size: contain;                /* contain, cover, or px like 1800px 1600px */
+  --leaves-brightness: 0.8;              /* filter brightness */
+  --leaves-contrast: 1.5;                /* filter contrast */
+
+  /* === GLOW SETTINGS === */
+  --glow-color: rgba(59, 130, 246, 0.5); /* bounce light color */
+  --glow-opacity: 0.7;                   /* glow layer opacity */
+}
+
+#dappled-light {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+}
+
+#glow,
+#glow-bounce {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#glow {
+  background: linear-gradient(309deg, var(--glow-color), var(--glow-color) 20%, transparent);
+  opacity: var(--glow-opacity);
+  transition: background 0.3s ease;
+}
+
+#glow-bounce {
+  background: linear-gradient(355deg, var(--glow-color) 0%, transparent 30%, transparent 100%);
+  opacity: var(--glow-opacity);
+  bottom: 0;
+  transition: background 0.3s ease;
+}
+
+.perspective {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#leaves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/leaves.png");
+  background-size: var(--leaves-size);
+  background-repeat: no-repeat;
+  background-position: var(--leaves-position-x) var(--leaves-position-y);
+  filter: url(#wind) brightness(var(--leaves-brightness)) contrast(var(--leaves-contrast));
+  animation: billow 20s ease-in-out infinite;
+  opacity: var(--leaves-opacity);
+  z-index: 0;
+}
+
+@keyframes billow {
+  0% {
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+  /* 25% {
+    transform: perspective(400px) rotateX(1deg) rotateY(2deg) scale(1.02);
+  }
+  50% {
+    transform: perspective(400px) rotateX(-4deg) rotateY(-2deg) scale(0.97);
+  }
+  75% {
+    transform: perspective(400px) rotateX(1deg) rotateY(-1deg) scale(1.04);
+  } */
+  100% {
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+}
