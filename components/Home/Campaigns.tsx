@@ -4,7 +4,7 @@ import { ArrowRight } from "../Vector";
 
 const Campaigns = () => {
   return (
-    <section className="relative">
+    <section className="relative bg-surface">
       <div
         className="
           absolute
@@ -12,7 +12,6 @@ const Campaigns = () => {
           right-0
           bottom-0
           h-[70%]
-          bg-[#fafafa]
           z-0
         "
       />

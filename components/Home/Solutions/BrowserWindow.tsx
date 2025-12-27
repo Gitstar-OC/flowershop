@@ -89,7 +89,7 @@ export default function BrowserWindow({
         )}
 
         <div className="relative w-[560px] h-[420px] overflow-hidden rounded-[12px] border bg-white shadow">
-          <div className="relative flex h-12 items-center border-b bg-[#fafafa] px-4">
+          <div className="relative flex h-12 items-center border-b bg-white px-4">
             <div className="flex gap-2">
               <MacButton color="red" />
               <MacButton color="yellow" />

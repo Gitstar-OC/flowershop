@@ -5,8 +5,8 @@ import { BrowserWindowStack } from "./BrowserWindowStack";
 
 const Solutions = () => {
   return (
-    <Wrapper>
-      <div id="solutions" className="scroll-mt-20"/>
+    <Wrapper paperTexture={true}>
+      <div id="solutions" className="scroll-mt-20 "/>
       <div className="flex flex-col mt-20 min-h-screen">
         <Header
           title="Measurable results. Real impact."

@@ -15,7 +15,7 @@ interface ResourceListProps {
 
 export function ResourceList({ resources }: ResourceListProps) {
   return (
-    <div className="noise">
+    <div className="paper-texture">
       <Wrapper>
         <section className="relative flex justify-center">
           {/* Sheet container */}

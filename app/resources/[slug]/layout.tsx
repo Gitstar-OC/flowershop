@@ -72,7 +72,7 @@ export default async function ResourceLayout({ children, params }: Props) {
   }
 
   return (
-    <div className="noise -mt-13">
+    <div className="paper-texture -mt-13">
       <Wrapper>
         <section className="relative pt-52 pb-40">
           <div className="relative flex">

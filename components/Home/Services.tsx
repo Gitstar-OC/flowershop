@@ -69,7 +69,7 @@ export default function ServicesSection() {
 
   return (
     <section
-      className="relative w-full bg-white pt-20"
+      className="relative w-full bg-surface pt-20"
       style={{ paddingBottom: (modalHeight + 50) / 3 }}
     >
       <div className="flex justify-center mb-20">

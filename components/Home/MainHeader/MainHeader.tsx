@@ -4,7 +4,7 @@ import Wrapper from "@/components/Wrapper";
 
 export default function MainHeader() {
   return (
-    <main className="relative -mt-13 overflow-hidden bg-morning-bg">
+    <main className="relative -mt-13 overflow-hidden bg-accent">
       <section className="relative min-h-screen flex flex-col items-center justify-center">
         <DappledLight />
         <Wrapper>
@@ -26,14 +26,15 @@ export default function MainHeader() {
               secondaryButtonChildren="Learn More"
               primaryButtonHref="/contact"
               secondaryButtonHref="#solutions"
+              buttonVariant="ghost"
             />
-          </div>
-
-          <section className="relative z-10 border-t ">
+          <section className="w-full z-10 border-t ">
             <div className="mx-auto max-w-6xl py-8 px-6 flex flex-wrap items-center justify-between gap-6 opacity-80">
               {/* logos here */}
             </div>
           </section>
+          </div>
+
         </Wrapper>
       </section>
     </main>

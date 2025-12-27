@@ -1,4 +1,6 @@
+"use client";
 import Wrapper from "../Wrapper";
+
 import Offices from "./Offices";
 import Image from "next/image";
 import Form from "./Form";
@@ -70,7 +72,24 @@ const ContactHeader = () => {
 
           <div className="w-full lg:w-1/2 flex justify-end">
             <div className="w-full max-w-130 bg-white rounded-2xl shadow p-8">
-              <Form />
+              <Form
+                onSubmit={async (data) => {
+                  const response = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                  });
+                  if (!response.ok) {
+                    console.log("Something went wrong");
+                    return false;
+                  }
+
+                  console.log("Successfully sent with async");
+                  return true;
+                }}
+              />
             </div>
           </div>
         </div>
