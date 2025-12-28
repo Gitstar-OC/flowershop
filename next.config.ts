@@ -1,7 +1,8 @@
-import type { NextConfig } from "next";
+const nextConfig = {
+  experimental: {
+    mdxRs: true,
+  },
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+export default nextConfig
