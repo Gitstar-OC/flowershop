@@ -1,13 +1,15 @@
+"use client";
 import Wrapper from "../Wrapper";
+
 import Offices from "./Offices";
 import Image from "next/image";
 import Form from "./Form";
 
-const LOGOS = [
-  "/assets/logo1.png",
-  "/assets/logo2.png",
-  "/assets/logo3.png",
-  "/assets/logo4.png",
+const contactLogos = [
+  "/contactLogos/Stage1.png",
+  "/contactLogos/HiNYC.png",
+  "/contactLogos/Kanha.png",
+  "/contactLogos/THC.png",
 ];
 
 const EMAIL = "help@flowershop.com";
@@ -42,7 +44,7 @@ const ContactHeader = () => {
             </div>
 
             <ul className="flex gap-6">
-              {LOGOS.map((src, i) => (
+              {contactLogos.map((src, i) => (
                 <li key={i} className="w-16 h-10">
                   <Image
                     src={src}
@@ -70,7 +72,24 @@ const ContactHeader = () => {
 
           <div className="w-full lg:w-1/2 flex justify-end">
             <div className="w-full max-w-130 bg-white rounded-2xl shadow p-8">
-              <Form />
+              <Form
+                onSubmit={async (data) => {
+                  const response = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                  });
+                  if (!response.ok) {
+                    console.log("Something went wrong");
+                    return false;
+                  }
+
+                  console.log("Successfully sent with async");
+                  return true;
+                }}
+              />
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ const Navbar = () => {
       className={cn(
         "h-13 sticky top-0 z-999 transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-md input" // bg-background when scrolled
+          ? "bg-white/80 backdrop-blur-md input" // bg-background when scrolled
           : "bg-transparent"
       )}
     >

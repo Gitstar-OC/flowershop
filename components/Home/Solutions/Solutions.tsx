@@ -2,11 +2,12 @@ import Header from "@/components/Header";
 import BrowserWindow from "./BrowserWindow";
 import Wrapper from "@/components/Wrapper";
 import { BrowserWindowStack } from "./BrowserWindowStack";
+import { Stats } from "./BrowserWindow";
 
 const Solutions = () => {
   return (
-    <Wrapper>
-      <div id="solutions" className="scroll-mt-20"/>
+    <Wrapper paperTexture={true}>
+      <div id="solutions" className="scroll-mt-20 "/>
       <div className="flex flex-col mt-20 min-h-screen">
         <Header
           title="Measurable results. Real impact."
@@ -62,6 +63,13 @@ const Solutions = () => {
             <div className="h-full w-full rounded-md bg-gray-100" />
           </BrowserWindow>
         </BrowserWindowStack>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center justify-center">       
+        <h2 className="paragraph mb-4 text-center"> And More</h2>
+          <Stats title=""/>
+          <Stats />
+          <Stats />
       </div>
     </Wrapper>
   );

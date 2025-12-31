@@ -1,15 +1,15 @@
 
 :root {
   /* === LEAVES LAYER SETTINGS === */
-  --leaves-opacity: 0.2;                /* 0-1: transparency of the shadow */
+  --leaves-opacity: 0.1;                /* 0-1: transparency of the shadow */
   --leaves-position-x: center;           /* left, center, right, or % like 20% */
   --leaves-position-y: center;           /* top, center, bottom, or % like 30% */
   --leaves-size: contain;                /* contain, cover, or px like 1800px 1600px */
   --leaves-brightness: 0.8;              /* filter brightness */
-  --leaves-contrast: 1.5;                /* filter contrast */
+  --leaves-contrast: 1.0;                /* filter contrast */
 
   /* === GLOW SETTINGS === */
-  --glow-color: rgba(59, 130, 246, 0.5); /* bounce light color */
+  --glow-color: rgba(250, 252, 255, 0.3); /* bounce light color */
   --glow-opacity: 0.7;                   /* glow layer opacity */
 }
 

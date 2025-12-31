@@ -3,7 +3,7 @@ import Wrapper from "../Wrapper";
 
 const StayInformed = () => {
   return (
-    <div className="bg-[#fafafa]">
+    <div className="bg-surface">
       <Wrapper>
         <div className="bg-white flex flex-col lg:h-125 justify-between input">
           <div className=" flex flex-1 items-center">

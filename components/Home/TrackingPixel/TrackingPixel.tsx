@@ -6,7 +6,7 @@ import { InteractiveGridPattern } from '@/components/InteractiveGridPattern'
 
 export default function TrackingPixel() {
   return (
-    <div className="relative overflow-hidden border-y input min-h-144">
+    <div className="relative bg-accent overflow-hidden border-y input min-h-144">
       <div className="absolute inset-0">
         <span
           className="absolute inset-0"
