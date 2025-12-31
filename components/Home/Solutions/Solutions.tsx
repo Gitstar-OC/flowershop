@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import BrowserWindow from "./BrowserWindow";
 import Wrapper from "@/components/Wrapper";
 import { BrowserWindowStack } from "./BrowserWindowStack";
+import { Stats } from "./BrowserWindow";
 
 const Solutions = () => {
   return (
@@ -62,6 +63,13 @@ const Solutions = () => {
             <div className="h-full w-full rounded-md bg-gray-100" />
           </BrowserWindow>
         </BrowserWindowStack>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center justify-center">       
+        <h2 className="paragraph mb-4 text-center"> And More</h2>
+          <Stats title=""/>
+          <Stats />
+          <Stats />
       </div>
     </Wrapper>
   );

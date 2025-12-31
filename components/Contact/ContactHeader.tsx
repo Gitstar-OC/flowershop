@@ -5,11 +5,11 @@ import Offices from "./Offices";
 import Image from "next/image";
 import Form from "./Form";
 
-const LOGOS = [
-  "/assets/logo1.png",
-  "/assets/logo2.png",
-  "/assets/logo3.png",
-  "/assets/logo4.png",
+const contactLogos = [
+  "/contactLogos/Stage1.png",
+  "/contactLogos/HiNYC.png",
+  "/contactLogos/Kanha.png",
+  "/contactLogos/THC.png",
 ];
 
 const EMAIL = "help@flowershop.com";
@@ -44,7 +44,7 @@ const ContactHeader = () => {
             </div>
 
             <ul className="flex gap-6">
-              {LOGOS.map((src, i) => (
+              {contactLogos.map((src, i) => (
                 <li key={i} className="w-16 h-10">
                   <Image
                     src={src}
